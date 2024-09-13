@@ -1,40 +1,43 @@
-import android.app.Activity
+package com.nashwa.apkpnp.adapter
+
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.nashwa.apkpnp.MainActivity
 import com.nashwa.apkpnp.Model.ImageModel
 import com.nashwa.apkpnp.R
 
-class GalleryAdapter(private val images: List<ImageModel>) : RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() {
+class GalleryAdapter(private val context: Context, private val images: Array<Int>) : BaseAdapter() {
 
-    class GalleryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val imageView: ImageView = view.findViewById(R.id.imageView)
-        // Jika ada deskripsi/judul
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GalleryViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_galery, parent, false)
-        return GalleryViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: GalleryViewHolder, position: Int) {
-        val currentImage = images[position]
-        holder.imageView.setImageResource(currentImage.imageResId)  // Set gambar
-                      // Set judul (jika ada)
-
-        // Tambahkan OnClickListener untuk item gambar
-        holder.imageView.setOnClickListener {
-            // Kembali ke halaman sebelumnya saat gambar diklik
-            val activity = it.context as Activity
-            activity.finish()  // Mengakhiri Activity dan kembali ke halaman sebelumnya
-        }
-    }
-
-    override fun getItemCount(): Int {
+    override fun getCount(): Int {
         return images.size
+    }
+
+    override fun getItem(position: Int): Any {
+        return images[position]
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        val view: View
+        val imageView: ImageView
+
+        if (convertView == null) {
+            view = LayoutInflater.from(context).inflate(R.layout.item_galery, parent, false)
+            imageView = view.findViewById(R.id.imageView)
+        } else {
+            view = convertView
+            imageView = view.findViewById(R.id.imageView)
+        }
+
+        imageView.setImageResource(images[position])
+        return view
     }
 }

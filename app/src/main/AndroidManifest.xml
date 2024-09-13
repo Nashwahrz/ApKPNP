@@ -13,6 +13,12 @@
         android:theme="@style/Theme.ApKPNP"
         tools:targetApi="31">
         <activity
+            android:name=".photodeatil"
+            android:exported="false" />
+        <activity
+            android:name=".PhotoDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".galery"
             android:exported="false" />
         <activity

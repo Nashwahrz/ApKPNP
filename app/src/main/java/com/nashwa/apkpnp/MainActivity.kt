@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
+
+
 class MainActivity : AppCompatActivity() {
     private lateinit var btnMi : Button
     private lateinit var btnTekom : Button
@@ -29,15 +31,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, tekom::class.java)
             startActivity(intent)
         }
-        btnPoto.setOnClickListener(){
-            val intent = Intent(this, galery::class.java)
-            startActivity(intent)
-        }
+       btnPoto.setOnClickListener(){
+           val intent = Intent(this, galery::class.java)
+           startActivity(intent)
+       }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
     }
 }
