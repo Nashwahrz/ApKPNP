@@ -30,7 +30,7 @@ class GalleryAdapter(private val context: Context, private val images: Array<Int
         val imageView: ImageView
 
         if (convertView == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.item_galery, parent, false)
+            view = LayoutInflater.from(context).inflate(R.layout.item_image, parent, false)
             imageView = view.findViewById(R.id.imageView)
         } else {
             view = convertView
