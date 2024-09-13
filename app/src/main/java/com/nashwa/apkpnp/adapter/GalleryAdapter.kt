@@ -1,3 +1,4 @@
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,7 @@ class GalleryAdapter(private val images: List<ImageModel>) : RecyclerView.Adapte
         // Tambahkan OnClickListener untuk item gambar
         holder.imageView.setOnClickListener {
             // Kembali ke halaman sebelumnya saat gambar diklik
-            val activity = it.context as MainActivity
+            val activity = it.context as Activity
             activity.finish()  // Mengakhiri Activity dan kembali ke halaman sebelumnya
         }
     }
